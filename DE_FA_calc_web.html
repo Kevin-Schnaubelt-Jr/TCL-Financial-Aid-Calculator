@@ -35,7 +35,7 @@
     </div>
 
     <div  class="flex justify-center">
-        <textarea class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem]" name="" id="hidden-text" cols="40" rows="17"></textarea>
+        <textarea class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="hidden-text" cols="40" rows="17"></textarea>
 
     </div>
 </div>
@@ -55,8 +55,8 @@ let app = new Vue({
     message: 'hello world!',
     creditHours: '',
     district: '',
-    dualFeeExemptions: ['hampton', 'jasper', 'polaris'],
-    privateInstitutions: ['homeschool', 'private', 'other'],
+    dualFeeExemptions: ['Hampton', 'Jasper', 'Polaris'],
+    privateInstitutions: ['Homeschool', 'Private', 'Other'],
     lotteryTuitionAssistance: 85,
     esserFund: 75,
     dualFeeWaiverBeaufort: 31,
@@ -72,8 +72,16 @@ let app = new Vue({
     sayHello: function() {
         console.log(this.outOfState)
     },
+    makeProper: function(word){
+        let firstLetter = word.charAt(0)
+        firstLetter = firstLetter.toUpperCase()
+        let remainingLetters = word.slice(1)
+        let properWord = firstLetter + remainingLetters
+        return properWord
+    },
     
     calculate: function(){
+        this.district = this.makeProper(this.district)
         let totalSum = 0
         let lotteryTotal = 0
         let esserTotal = 0
@@ -113,7 +121,7 @@ let app = new Vue({
         {
             debugString += `Dual fee was exempted because district was ${this.district}.\n`
         }
-        else if (this.district == 'beaufort')
+        else if (this.district == 'Beaufort')
         {
             dualFeeTotal += this.creditHours * this.dualFeeWaiverBeaufort
         }
