@@ -162,8 +162,14 @@ Esser ${esserString} ${esserTotal}
 Dual Fee Total ${dualFeeTotal}
         `
         document.querySelector('#hidden-text').innerHTML = debugString + '-------------\n' + documentLiteral
-        document.querySelector('#second-div').style.display = 'flex'
-        document.querySelector('#second-text').innerHTML = ''
+        if (this.district == 'Beaufort')
+        {
+            document.querySelector('#second-div').style.display = 'flex'
+            document.querySelector('#second-text').innerHTML = ''
+        }
+        else{
+            document.querySelector('#second-div').style.display = 'none'
+        }
     },
 
     // calculate if their total is correct
