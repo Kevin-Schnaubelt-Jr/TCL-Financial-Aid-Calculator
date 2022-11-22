@@ -40,7 +40,7 @@
     </div>
     <br>
     <div id="second-div" class="flex flex-col items-center hidden mb-[2rem]" >
-        <p>Calculate if tuition total is correct.</p>
+        <p>Calculate if tuition total is correct for Beaufort.</p>
         <input v-model="tuitionBeforeAssistance" type="text" placeholder="Tuition Total" class="mt-2">
         <button @click="calculateTuitionCost" class="border-1 rounded-[0.8rem] h-[2rem] w-16 bg-slate-300 mt-2">Submit</button>
         <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="second-text" cols="40" rows="7"></textarea>
@@ -163,6 +163,7 @@ Dual Fee Total ${dualFeeTotal}
         `
         document.querySelector('#hidden-text').innerHTML = debugString + '-------------\n' + documentLiteral
         document.querySelector('#second-div').style.display = 'flex'
+        document.querySelector('#second-text').innerHTML = ''
     },
 
     // calculate if their total is correct
@@ -185,6 +186,7 @@ Total tuition should be $${this.totalAssistance + this.creditHours * this.beaufo
         }
 
         document.querySelector('#second-text').innerHTML = documentLiteral
+        console.log(this.tuitionBeforeAssistance)
 
     }
     },
