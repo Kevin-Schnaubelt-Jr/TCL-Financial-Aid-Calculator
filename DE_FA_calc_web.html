@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>DE FA Calc</title>
 </head>
-<body class="bg-gradient-to-t from-teal-600 to-white h-screen">
+<body class="bg-gradient-to-t from-teal-600 to-white h-full">
     <!-- html element represnting the app, referenced by 'el' -->
 <div id="app">
     <div class="">
@@ -37,6 +37,13 @@
     <div  class="flex justify-center">
         <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="hidden-text" cols="40" rows="17"></textarea>
 
+    </div>
+    <br>
+    <div id="second-div" class="flex flex-col items-center hidden mb-[2rem]" >
+        <p>Calculate if tuition total is correct.</p>
+        <input v-model="tuitionBeforeAssistance" type="text" placeholder="Tuition Total" class="mt-2">
+        <button @click="calculateTuitionCost" class="border-1 rounded-[0.8rem] h-[2rem] w-16 bg-slate-300 mt-2">Submit</button>
+        <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="second-text" cols="40" rows="7"></textarea>
     </div>
 </div>
 
@@ -61,7 +68,12 @@ let app = new Vue({
     esserFund: 75,
     dualFeeWaiverBeaufort: 31,
     dualFeeWaiverPrivateInstitutions: 41,
-    outOfState: false
+    outOfState: false,
+    totalAssistance: 0,
+    tuitionBeforeAssistance: '',
+    beaufortPerCreditHour: 49,
+
+
 
     },
     // app methods
@@ -81,8 +93,8 @@ let app = new Vue({
     },
     
     calculate: function(){
+        this.totalAssistance = 0
         this.district = this.makeProper(this.district)
-        let totalSum = 0
         let lotteryTotal = 0
         let esserTotal = 0
         let esserString = 'Total'
@@ -133,7 +145,7 @@ let app = new Vue({
             debugString += 'SPELLING ERROR!!!\n'
         }
 
-        totalSum += lotteryTotal + esserTotal + dualFeeTotal
+        this.totalAssistance += lotteryTotal + esserTotal + dualFeeTotal
 
         if (this.dualFeeExemptions.includes(this.district))
         {
@@ -144,12 +156,36 @@ let app = new Vue({
 
         let documentLiteral = `
 Credit Hours ${this.creditHours}
-Total ${totalSum}
+Total ${this.totalAssistance}
 Lottery Total ${lotteryTotal}
 Esser ${esserString} ${esserTotal}
 Dual Fee Total ${dualFeeTotal}
         `
         document.querySelector('#hidden-text').innerHTML = debugString + '-------------\n' + documentLiteral
+        document.querySelector('#second-div').style.display = 'flex'
+    },
+
+    // calculate if their total is correct
+    calculateTuitionCost: function(){
+        let documentLiteral = ''
+        let tuitionAfterAssistance = 0
+        tuitionAfterAssistance = this.tuitionBeforeAssistance - this.totalAssistance
+        if (tuitionAfterAssistance / this.creditHours === this.beaufortPerCreditHour)
+        {
+           documentLiteral = `At $${tuitionAfterAssistance / this.creditHours} per credit hour, this meets standard rate.`
+        }
+        else
+        {
+            documentLiteral = `
+At $${tuitionAfterAssistance / this.creditHours} per credit hour, this does not meet standard rate.
+The total tuition after assistance is $${tuitionAfterAssistance} and should be $${this.creditHours * this.beaufortPerCreditHour},
+which is off by $${tuitionAfterAssistance - this.creditHours * this.beaufortPerCreditHour}.
+Total tuition should be $${this.totalAssistance + this.creditHours * this.beaufortPerCreditHour}`
+
+        }
+
+        document.querySelector('#second-text').innerHTML = documentLiteral
+
     }
     },
     // created - a lifecycle hook
