@@ -1,7 +1,7 @@
 ## TLC Tutition Assitance Cacluator
 
 <p align="center">
-  <img src="(https://github.com/Kevin-Schnaubelt-Jr/Sara-Calculators/blob/main/FinancialAidCalc.png)"/>
+  <img src="https://github.com/Kevin-Schnaubelt-Jr/Sara-Calculators/blob/main/FinancialAidCalc.png"/>
 </p>
 
 
