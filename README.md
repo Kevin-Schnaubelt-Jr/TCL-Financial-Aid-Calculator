@@ -1,6 +1,8 @@
+## TLC Tutition Assitance Cacluator
+
 ![Page Preview Image](FinancialAidCalc.png)
 
-## TLC Tutition Assitance Cacluator
+
 
 
 This program allows you to input a student's credit hours, 
