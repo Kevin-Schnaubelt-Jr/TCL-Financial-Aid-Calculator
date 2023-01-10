@@ -8,7 +8,7 @@
 
 
 
-This program allows you to en6ter a student's credit hours, 
+This program allows you to enter a student's credit hours, 
 as well as their designated county. Counties include Beaufort, Hampton, Jasper, Polaris, as well as "Homeschool", "Private", or "Other." 
 
 There is also a radio button that can be selected to identify a student as "out of state."
