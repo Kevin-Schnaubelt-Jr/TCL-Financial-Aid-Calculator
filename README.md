@@ -1,7 +1,7 @@
 ## TLC Tutition Assitance Cacluator
 
 <p align="center">
-  ![Page Preview Image](FinancialAidCalc.png)
+  <img src="https://github.com/waldyr/Sublime-Installer/blob/master/sublime_text.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
 
