@@ -1,6 +1,9 @@
 ## TLC Tutition Assitance Cacluator
 
-![Page Preview Image](FinancialAidCalc.png)
+<p align="center">
+  ![Page Preview Image](FinancialAidCalc.png)
+</p>
+
 
 
 
