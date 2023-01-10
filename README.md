@@ -1,7 +1,7 @@
 ## TLC Tutition Assitance Cacluator
 
 <p align="center">
-  <img src="https://github.com/Kevin-Schnaubelt-Jr/Sara-Calculators/commit/df96aaa103e7dc9f32b224d785ec2901b4964dfe)"/>
+  <img src="https://github.com/Kevin-Schnaubelt-Jr/Sara-Calculators/commit/df96aaa103e7dc9f32b224d785ec2901b4964dfe"/>
 </p>
 
 
