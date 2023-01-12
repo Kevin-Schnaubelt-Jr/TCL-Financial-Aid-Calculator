@@ -15,6 +15,4 @@ There is also a radio button that can be selected to identify a student as "out 
 
 > submitting "Beaufort" will enable you to enter the student's tuition total in order to check to see if it adheres to a specific price per credit hour requirement. 
 
-## INSTALLATION 
-The calcuator is contained in a single HTML file, which can be downloaded by clicking "TCL Tuition Assistance Calculator"
-under "releases" to the right of this page, then clicking "TCL_Tuition_Assistance_Calculator.html" under "Assets".
+
