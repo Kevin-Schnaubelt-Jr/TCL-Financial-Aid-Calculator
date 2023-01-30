@@ -43,7 +43,7 @@
         <p>Calculate if tuition total is correct for Beaufort.</p>
         <input v-model="tuitionBeforeAssistance" type="text" placeholder="Tuition Total" class="mt-2">
         <button @click="calculateTuitionCost" class="border-1 rounded-[0.8rem] h-[2rem] w-16 bg-slate-300 mt-2">Submit</button>
-        <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="second-text" cols="40" rows="7"></textarea>
+        <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="second-text" cols="40" rows="9"></textarea>
     </div>
 </div>
 
@@ -73,6 +73,7 @@ let app = new Vue({
     tuitionBeforeAssistance: '',
     beaufortPerCreditHour: 49,
     tuitionCharge: 214,
+    
 
     dualFeeTotalGlobal: 0,
 
@@ -108,6 +109,7 @@ let app = new Vue({
         // Lottery determination
         if (this.outOfState)
         {
+            this.tuitionCharge = 445
             debugString += 'Exempt from lottery because out of state.\n'
         }
         else if (this.creditHours > 5)
