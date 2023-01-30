@@ -72,6 +72,9 @@ let app = new Vue({
     totalAssistance: 0,
     tuitionBeforeAssistance: '',
     beaufortPerCreditHour: 49,
+    tuitionCharge: 214,
+
+    dualFeeTotalGlobal: 0,
 
 
 
@@ -118,9 +121,9 @@ let app = new Vue({
 
 
         // Esser determination
-        if (this.privateInstitutions.includes(this.district))
+        if (this.privateInstitutions.includes(this.district) | this.district === 'Beaufort')
         {
-            debugString += 'No esser assistance because distract was private.\n'
+            debugString += 'No esser assistance because distract was private or Beaufort.\n'
         }
         else
         {
@@ -156,11 +159,14 @@ let app = new Vue({
 
         let documentLiteral = `
 Credit Hours ${this.creditHours}
-Total ${this.totalAssistance}
+Tuition ${this.tuitionCharge * this.creditHours}
+Total Tuition Assistance ${this.totalAssistance}
 Lottery Total ${lotteryTotal}
 Esser ${esserString} ${esserTotal}
 Dual Fee Total ${dualFeeTotal}
         `
+        this.tuitionBeforeAssistance = this.tuitionCharge * this.creditHours
+        this.dualFeeTotalGlobal = dualFeeTotal
         document.querySelector('#hidden-text').innerHTML = debugString + '-------------\n' + documentLiteral
         if (this.district == 'Beaufort')
         {
@@ -187,7 +193,7 @@ Dual Fee Total ${dualFeeTotal}
 At $${tuitionAfterAssistance / this.creditHours} per credit hour, this does not meet standard rate.
 The total tuition after assistance is $${tuitionAfterAssistance} and should be $${this.creditHours * this.beaufortPerCreditHour},
 which is off by $${tuitionAfterAssistance - this.creditHours * this.beaufortPerCreditHour}.
-Total tuition should be $${this.totalAssistance + this.creditHours * this.beaufortPerCreditHour}`
+Add $${tuitionAfterAssistance - this.creditHours * this.beaufortPerCreditHour} to Dual Fee, for a Dual Fee total of  $${(tuitionAfterAssistance - this.creditHours * this.beaufortPerCreditHour) + this.dualFeeTotalGlobal}`
 
         }
 
