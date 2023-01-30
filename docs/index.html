@@ -72,7 +72,7 @@ let app = new Vue({
     totalAssistance: 0,
     tuitionBeforeAssistance: '',
     beaufortPerCreditHour: 49,
-    tuitionCharge: 214,
+    tuitionCharge: 0,
     
 
     dualFeeTotalGlobal: 0,
@@ -114,10 +114,12 @@ let app = new Vue({
         }
         else if (this.creditHours > 5)
         {
+            this.tuitionCharge = 214
             lotteryTotal += this.creditHours * this.lotteryTuitionAssistance
         }
         else if (this.creditHours < 6)
         {
+            this.tuitionCharge = 214
             debugString += 'Not enough credit hours for lottery tuition.\n'
         }
 
