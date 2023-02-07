@@ -9,12 +9,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
         body {font-family: 'Didact Gothic', sans-serif;}
     </style>
+    <link rel="stylesheet" href="styles.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://kit.fontawesome.com/dd6b6dce0f.js" crossorigin="anonymous"></script>
     <title>DE FA Calc</title>
 </head>
-<body class="bg-gradient-to-t from-teal-600 to-white h-full md:h-screen">
+<body class=" h-full md:h-screen">
     <!-- html element represnting the app, referenced by 'el' -->
 <div id="app">
     <div class="">
@@ -34,12 +36,13 @@
         </div>
     </div>
 
-    <div  class="flex justify-center">
+    <div  class="flex justify-center relative">
         <textarea disabled class="h-full bg-transparent text-center border border-orange-500 mt-[0.5rem] p-4" name="" id="hidden-text" cols="40" rows="17"></textarea>
-
+        <p v-if="animateBool == true" class="absolute bottom-6">scroll down</p>
+        <i v-if="animateBool == true" class="fa-solid fa-angles-down absolute bottom-1 animate-bounce"></i>
     </div>
-    <br>
-    <div id="second-div" class="flex flex-col items-center hidden mb-[2rem]" >
+    
+    <div  id="second-div" class="flex flex-col items-center hidden mt-[2rem] mb-[2rem]" >
         <p>Calculate if tuition total is correct for Beaufort.</p>
         <input v-model="tuitionBeforeAssistance" type="text" placeholder="Tuition Total" class="mt-2">
         <button @click="calculateTuitionCost" class="border-1 rounded-[0.8rem] h-[2rem] w-16 bg-slate-300 mt-2">Submit</button>
@@ -76,6 +79,9 @@ let app = new Vue({
     
 
     dualFeeTotalGlobal: 0,
+
+    // bools
+    animateBool: false
 
 
 
@@ -174,10 +180,12 @@ Dual Fee Total ${dualFeeTotal}
         document.querySelector('#hidden-text').innerHTML = debugString + '-------------\n' + documentLiteral
         if (this.district == 'Beaufort')
         {
+            this.animateBool = true
             document.querySelector('#second-div').style.display = 'flex'
             document.querySelector('#second-text').innerHTML = ''
         }
         else{
+            this.animateBool = false
             document.querySelector('#second-div').style.display = 'none'
         }
     },
