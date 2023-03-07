@@ -15,4 +15,5 @@ There is also a radio button that can be selected to identify a student as "out 
 
 > submitting "Beaufort" will enable you to enter the student's tuition total in order to check to see if it adheres to a specific price per credit hour requirement. 
 
+Deployed here: https://kevin-schnaubelt-jr.github.io/TCL-Financial-Aid-Calculator/
 
